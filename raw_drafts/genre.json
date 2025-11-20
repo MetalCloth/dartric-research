@@ -1,0 +1,25 @@
+{
+  "name": "genre",
+  "summary": "A lookup table storing distinct music genres.",
+  "purpose": "This table defines and categorizes different types of music genres, providing a unique identifier for each. It enables other tables, such as 'track' or 'album', to associate their records with a specific genre for classification and filtering purposes.",
+  "dependencies_thoughts": "This is a foundational lookup table. It does not depend on other tables but is designed to be referenced by other tables (e.g., `track` or `album`) via a foreign key on `genre_id` to categorize music.",
+  "keys": [
+    "genre_id"
+  ],
+  "connected_tables": [],
+  "columns": [
+    {
+      "column": "genre_id",
+      "description": "The unique numerical identifier for a music genre. This serves as the primary key."
+    },
+    {
+      "column": "name",
+      "description": "The name of the genre (e.g., 'Rock', 'Pop', 'Classical')."
+    }
+  ],
+  "strong_entities": [
+    "Genre",
+    "Music Type",
+    "Category"
+  ]
+}

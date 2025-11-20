@@ -1,0 +1,82 @@
+{
+  "name": "employee",
+  "summary": "Stores comprehensive details for each employee, including their personal information, contact details, and organizational reporting structure.",
+  "purpose": "This table is designed to manage all employee records within an organization. It tracks essential personal and professional data, and critically, it defines the managerial hierarchy through a self-referencing 'reports_to' foreign key, allowing for a clear chain of command within the company.",
+  "dependencies_thoughts": "This table has a self-referencing dependency where the `reports_to` column is a foreign key to the `employee_id` column within the same table. This models a hierarchical reporting structure, indicating which employee reports to which manager.",
+  "keys": [
+    "employee_id",
+    "reports_to"
+  ],
+  "connected_tables": [
+    "employee"
+  ],
+  "columns": [
+    {
+      "column": "employee_id",
+      "description": "The unique numerical identifier for each employee. This serves as the primary key for the table."
+    },
+    {
+      "column": "last_name",
+      "description": "The employee's last name. This field is mandatory."
+    },
+    {
+      "column": "first_name",
+      "description": "The employee's first name. This field is mandatory."
+    },
+    {
+      "column": "title",
+      "description": "The employee's job title or position within the organization."
+    },
+    {
+      "column": "reports_to",
+      "description": "The numerical identifier of the employee's direct manager. This is a foreign key referencing the 'employee_id' in the same 'employee' table, establishing the reporting hierarchy. A NULL value could indicate a top-level employee or CEO."
+    },
+    {
+      "column": "birth_date",
+      "description": "The employee's date of birth."
+    },
+    {
+      "column": "hire_date",
+      "description": "The date when the employee was hired by the company."
+    },
+    {
+      "column": "address",
+      "description": "The employee's street address."
+    },
+    {
+      "column": "city",
+      "description": "The city where the employee resides."
+    },
+    {
+      "column": "state",
+      "description": "The state or province where the employee resides."
+    },
+    {
+      "column": "country",
+      "description": "The country where the employee resides."
+    },
+    {
+      "column": "postal_code",
+      "description": "The postal code or ZIP code of the employee's address."
+    },
+    {
+      "column": "phone",
+      "description": "The employee's primary phone number."
+    },
+    {
+      "column": "fax",
+      "description": "The employee's fax number, if applicable."
+    },
+    {
+      "column": "email",
+      "description": "The employee's email address."
+    }
+  ],
+  "strong_entities": [
+    "Employee",
+    "Person",
+    "Manager",
+    "Role",
+    "Contact"
+  ]
+}

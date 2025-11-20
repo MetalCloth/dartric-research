@@ -1,0 +1,34 @@
+{
+  "name": "album",
+  "summary": "Stores metadata and relationships for music albums.",
+  "purpose": "To catalog individual music albums, including their title and the artist who created them. It serves as a central repository for album details, allowing tracks to be associated with specific albums and providing a clear link to the album's performing artist.",
+  "dependencies_thoughts": "Relates to the `artist` table (artist_id to artist_id), establishing which artist created each album. It typically serves as a parent table for `track` records, which would reference `album_id` to link tracks to their respective albums.",
+  "keys": [
+    "album_id",
+    "artist_id"
+  ],
+  "connected_tables": [
+    "artist"
+  ],
+  "columns": [
+    {
+      "column": "album_id",
+      "description": "The unique numerical identifier for the album. This is the primary key for the table, ensuring each album record is distinct."
+    },
+    {
+      "column": "title",
+      "description": "The official title of the album. This field is mandatory and provides the name by which the album is known."
+    },
+    {
+      "column": "artist_id",
+      "description": "The numerical identifier of the artist who created or performed on the album. This is a foreign key referencing the 'artist' table, ensuring that every album is correctly attributed to an existing artist."
+    }
+  ],
+  "strong_entities": [
+    "Album",
+    "Artist",
+    "Track",
+    "Song",
+    "Music"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "artist",
+  "summary": "Stores fundamental information about musical artists.",
+  "purpose": "This table serves as the primary entity for managing artists within the database schema. It provides a unique identifier for each artist and their official name, acting as a foundational lookup table for other entities like albums, tracks, or events that need to associate with a specific artist.",
+  "dependencies_thoughts": "This table acts as a foundational parent entity. Other tables, such as `album` or `track`, are expected to establish foreign key relationships with `artist_id` to link their respective records to a specific artist. No explicit outgoing foreign keys are defined from this table.",
+  "keys": [
+    "artist_id"
+  ],
+  "connected_tables": [],
+  "columns": [
+    {
+      "column": "artist_id",
+      "description": "The unique numerical identifier for the artist. This is the primary key for the table and cannot be NULL."
+    },
+    {
+      "column": "name",
+      "description": "The name of the artist, typically their official stage name or group name, limited to 120 characters."
+    }
+  ],
+  "strong_entities": [
+    "Artist",
+    "Musician",
+    "Performer",
+    "Band"
+  ]
+}

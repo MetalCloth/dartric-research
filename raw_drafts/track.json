@@ -1,0 +1,63 @@
+{
+  "name": "track",
+  "summary": "Stores detailed information about individual music tracks.",
+  "purpose": "To catalog all music tracks available in the system, providing essential metadata such as the track's name, its associated album, media type, genre, composer, duration, file size, and unit price. It serves as the primary repository for track-specific data, enabling playback, searching, and purchasing functionalities.",
+  "dependencies_thoughts": "This table is central to the music catalog. It relates to the `album` table (album_id to album_id) to link tracks to their respective albums, the `media_type` table (media_type_id to media_type_id) to specify the format of the track, and the `genre` table (genre_id to genre_id) to categorize tracks by musical style. Records in this table depend on the existence of IDs in these parent tables.",
+  "keys": [
+    "track_id",
+    "album_id",
+    "genre_id",
+    "media_type_id"
+  ],
+  "connected_tables": [
+    "album",
+    "genre",
+    "media_type"
+  ],
+  "columns": [
+    {
+      "column": "track_id",
+      "description": "The unique numerical identifier for the track. This is the primary key of the table."
+    },
+    {
+      "column": "name",
+      "description": "The title or name of the track. This field cannot be null."
+    },
+    {
+      "column": "album_id",
+      "description": "The numerical identifier of the album this track belongs to. This is a foreign key referencing the 'album' table."
+    },
+    {
+      "column": "media_type_id",
+      "description": "The numerical identifier for the media type (e.g., MPEG audio file, protected AAC audio file). This is a foreign key referencing the 'media_type' table and cannot be null."
+    },
+    {
+      "column": "genre_id",
+      "description": "The numerical identifier for the musical genre of the track. This is a foreign key referencing the 'genre' table."
+    },
+    {
+      "column": "composer",
+      "description": "The name of the composer(s) for the track."
+    },
+    {
+      "column": "milliseconds",
+      "description": "The duration of the track in milliseconds. This field cannot be null."
+    },
+    {
+      "column": "bytes",
+      "description": "The size of the track file in bytes."
+    },
+    {
+      "column": "unit_price",
+      "description": "The price of a single unit of the track. This field cannot be null."
+    }
+  ],
+  "strong_entities": [
+    "Track",
+    "Album",
+    "Media Type",
+    "Genre",
+    "Composer",
+    "Product"
+  ]
+}

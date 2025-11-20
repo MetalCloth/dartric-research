@@ -1,0 +1,25 @@
+{
+  "name": "media_type",
+  "summary": "A reference table storing distinct categories or types of media.",
+  "purpose": "This table provides a standardized list of media formats or genres. Its primary purpose is to allow other tables (like 'track') to categorize their media content consistently by referencing a `media_type_id`, thereby ensuring data integrity and simplifying content management.",
+  "dependencies_thoughts": "This table is a standalone lookup table, acting as a parent for other tables that might need to classify media. It does not have any foreign key dependencies on other tables, but its primary key (`media_type_id`) is designed to be referenced by child tables (e.g., `track`) to categorize their media items.",
+  "keys": [
+    "media_type_id"
+  ],
+  "connected_tables": [],
+  "columns": [
+    {
+      "column": "media_type_id",
+      "description": "The unique numerical identifier for each specific media type. This is the primary key of the table."
+    },
+    {
+      "column": "name",
+      "description": "The descriptive name of the media type (e.g., 'MPEG audio file', 'Protected AAC audio file')."
+    }
+  ],
+  "strong_entities": [
+    "Media Type",
+    "Category",
+    "Media"
+  ]
+}

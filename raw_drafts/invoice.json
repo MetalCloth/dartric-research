@@ -1,0 +1,56 @@
+{
+  "name": "invoice",
+  "summary": "Records detailed information for each customer invoice.",
+  "purpose": "This table captures all relevant financial and billing information for individual customer transactions. It serves as a historical record of purchases, detailing the total amount, billing address, and the date the invoice was issued, linking each transaction back to a specific customer.",
+  "dependencies_thoughts": "Relates to the `customer` table (customer_id to customer_id). Each invoice record is directly associated with a specific customer, ensuring proper attribution of transactions and allowing for a complete view of a customer's purchasing history.",
+  "keys": [
+    "invoice_id"
+  ],
+  "connected_tables": [
+    "customer"
+  ],
+  "columns": [
+    {
+      "column": "invoice_id",
+      "description": "The unique identifier for each invoice. This is the primary key of the table."
+    },
+    {
+      "column": "customer_id",
+      "description": "The numerical identifier of the customer to whom this invoice belongs. This is a foreign key referencing the `customer` table."
+    },
+    {
+      "column": "invoice_date",
+      "description": "The date and time when the invoice was generated or issued."
+    },
+    {
+      "column": "billing_address",
+      "description": "The street address used for billing purposes on this invoice."
+    },
+    {
+      "column": "billing_city",
+      "description": "The city associated with the billing address for this invoice."
+    },
+    {
+      "column": "billing_state",
+      "description": "The state or province associated with the billing address for this invoice."
+    },
+    {
+      "column": "billing_country",
+      "description": "The country associated with the billing address for this invoice."
+    },
+    {
+      "column": "billing_postal_code",
+      "description": "The postal or ZIP code associated with the billing address for this invoice."
+    },
+    {
+      "column": "total",
+      "description": "The total monetary amount of the invoice, including taxes and other charges."
+    }
+  ],
+  "strong_entities": [
+    "Invoice",
+    "Customer",
+    "Address",
+    "Transaction"
+  ]
+}

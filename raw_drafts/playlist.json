@@ -1,0 +1,27 @@
+{
+  "name": "playlist",
+  "summary": "Stores metadata for individual music playlists.",
+  "purpose": "This table defines unique playlists that can be created and managed within the system. It serves as the primary entity for organizing collections of music tracks, allowing users to group songs together for various listening experiences.",
+  "dependencies_thoughts": "This table acts as a parent entity. Other tables, such as `playlist_track`, will reference `playlist_id` to associate specific tracks with these defined playlists, establishing a one-to-many relationship where one playlist can contain many tracks.",
+  "keys": [
+    "playlist_id"
+  ],
+  "connected_tables": [
+    "playlist_track"
+  ],
+  "columns": [
+    {
+      "column": "playlist_id",
+      "description": "The unique numerical identifier for a playlist. This is the primary key for the table."
+    },
+    {
+      "column": "name",
+      "description": "The human-readable name or title given to the playlist."
+    }
+  ],
+  "strong_entities": [
+    "Playlist",
+    "Track",
+    "Music"
+  ]
+}

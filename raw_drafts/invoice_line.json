@@ -1,0 +1,44 @@
+{
+  "name": "invoice_line",
+  "summary": "A detail table representing a single item within a customer invoice, linking to both the invoice and the specific track purchased.",
+  "purpose": "This table exists to provide granular detail for each item included in an `invoice`. It records which `track` was purchased, at what `unit_price`, and in what `quantity`, enabling a complete breakdown of an invoice's contents and total value. This is crucial for sales reporting and inventory management related to tracks.",
+  "dependencies_thoughts": "This table acts as a detail record for the `invoice` table, with each line item referencing a specific `track` from the `track` table. Its existence is dependent on valid `invoice` and `track` entries.",
+  "keys": [
+    "invoice_line_id",
+    "invoice_id",
+    "track_id"
+  ],
+  "connected_tables": [
+    "invoice",
+    "track"
+  ],
+  "columns": [
+    {
+      "column": "invoice_line_id",
+      "description": "The unique identifier for each individual line item within an invoice, serving as the primary key."
+    },
+    {
+      "column": "invoice_id",
+      "description": "The identifier of the parent invoice to which this line item belongs. This is a foreign key referencing the 'invoice' table."
+    },
+    {
+      "column": "track_id",
+      "description": "The identifier of the music track being purchased in this line item. This is a foreign key referencing the 'track' table."
+    },
+    {
+      "column": "unit_price",
+      "description": "The price of a single unit of the track at the time of purchase."
+    },
+    {
+      "column": "quantity",
+      "description": "The number of units of the track purchased in this line item."
+    }
+  ],
+  "strong_entities": [
+    "Invoice",
+    "Line Item",
+    "Track",
+    "Customer",
+    "Product"
+  ]
+}

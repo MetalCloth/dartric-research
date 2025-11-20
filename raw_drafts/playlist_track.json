@@ -1,0 +1,29 @@
+{
+  "name": "playlist_track",
+  "summary": "A junction table linking music tracks to playlists.",
+  "purpose": "To bridge the many-to-many relationship between playlists and tracks. It allows a single playlist to contain multiple tracks and a single track to be listed in multiple different playlists without duplicating data.",
+  "dependencies_thoughts": "Relates to the `playlist` table (playlist_id to playlist_id) and the `track` table (track_id to track_id). Records here depend on the existence of IDs in both parent tables.",
+  "keys": [
+    "playlist_id",
+    "track_id"
+  ],
+  "connected_tables": [
+    "playlist",
+    "track"
+  ],
+  "columns": [
+    {
+      "column": "playlist_id",
+      "description": "The numerical identifier of the playlist. This is part of the composite primary key and a foreign key referencing the 'playlist' table."
+    },
+    {
+      "column": "track_id",
+      "description": "The numerical identifier of the music track. This is part of the composite primary key and a foreign key referencing the 'track' table."
+    }
+  ],
+  "strong_entities": [
+    "Playlist",
+    "Track",
+    "Song"
+  ]
+}
