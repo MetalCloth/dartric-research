@@ -43,6 +43,7 @@ def generate_embeddings(table_json):
     """using 5 embedding technique from the research paper"""
 
     table_name=table_json['name']
+    
 
     parent_id=f"table_{table_name}"
 
@@ -86,4 +87,8 @@ def generate_embeddings(table_json):
             page_content=f"CONCEPTS {table_name}: ENTITIES: {', '.join(table_json['strong_entities'])}",
             metadata={"parent_id": parent_id, "type": "entities"}
     ))
+
+    return docs
+
+
 
