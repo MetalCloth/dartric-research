@@ -1,0 +1,53 @@
+{
+  "name": "rental",
+  "summary": "Records individual rental transactions, connecting customers, inventory items, and staff members.",
+  "purpose": "This table serves as a log for all rental activities, detailing when an item was rented, by whom, which specific item was taken, and which staff member facilitated the transaction. It also tracks the return date, enabling management to monitor the status of rented items and analyze rental patterns.",
+  "dependencies_thoughts": "This table is a central transaction table, relying on the `customer` table (via customer_id), the `inventory` table (via inventory_id), and the `staff` table (via staff_id). Each rental record is dependent on the existence of these related entities.",
+  "keys": [
+    "rental_id",
+    "customer_id",
+    "inventory_id",
+    "staff_id"
+  ],
+  "connected_tables": [
+    "customer",
+    "inventory",
+    "staff"
+  ],
+  "columns": [
+    {
+      "column": "rental_id",
+      "description": "The unique identifier for each rental transaction. This is the primary key of the table, automatically generated."
+    },
+    {
+      "column": "rental_date",
+      "description": "The date and time when the item was rented out."
+    },
+    {
+      "column": "inventory_id",
+      "description": "The identifier of the specific inventory item that was rented. This is a foreign key referencing the 'inventory' table."
+    },
+    {
+      "column": "customer_id",
+      "description": "The identifier of the customer who rented the item. This is a foreign key referencing the 'customer' table."
+    },
+    {
+      "column": "return_date",
+      "description": "The date and time when the item was returned. This column will be NULL if the item is still currently out for rental."
+    },
+    {
+      "column": "staff_id",
+      "description": "The identifier of the staff member who processed the rental transaction. This is a foreign key referencing the 'staff' table."
+    },
+    {
+      "column": "last_update",
+      "description": "The timestamp indicating the last time this rental record was updated, defaulting to the current time upon creation or update."
+    }
+  ],
+  "strong_entities": [
+    "Rental",
+    "Customer",
+    "Inventory Item",
+    "Staff Member"
+  ]
+}

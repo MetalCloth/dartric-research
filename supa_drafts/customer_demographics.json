@@ -1,0 +1,24 @@
+{
+  "name": "customer_demographics",
+  "summary": "A lookup table defining various customer demographic types.",
+  "purpose": "To categorize and describe different customer segments within the system. This table provides a standardized list of customer types, allowing other tables (e.g., a 'customers' table) to reference these types for consistent demographic classification and reporting.",
+  "dependencies_thoughts": "This table acts as a reference or dimension table. While it does not explicitly define foreign keys to other tables, it is highly probable that other tables, such as a main `customer` table, would contain a foreign key referencing `customer_type_id` from this table to assign a demographic type to each customer.",
+  "keys": [
+    "customer_type_id"
+  ],
+  "connected_tables": [],
+  "columns": [
+    {
+      "column": "customer_type_id",
+      "description": "A unique, short identifier for a specific customer demographic type (e.g., 'RETL' for Retail, 'CORP' for Corporate). This is the primary key for the table."
+    },
+    {
+      "column": "customer_desc",
+      "description": "A detailed textual description of the customer demographic type, providing more context and information."
+    }
+  ],
+  "strong_entities": [
+    "Customer",
+    "Demographic Type"
+  ]
+}

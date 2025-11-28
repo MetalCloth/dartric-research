@@ -1,0 +1,94 @@
+{
+  "name": "employees",
+  "summary": "A central table for storing detailed information about company employees and their organizational structure.",
+  "purpose": "This table serves as the primary repository for all employee-related data, including personal details, contact information, job roles, and hierarchical reporting lines. It enables the organization to manage human resources efficiently and understand the internal reporting structure.",
+  "dependencies_thoughts": "This is a self-referencing table where the `reports_to` column (a foreign key referencing `employee_id` within the same table) establishes a hierarchical relationship, allowing employees to report to other employees and forming an organizational tree structure.",
+  "keys": [
+    "employee_id",
+    "reports_to"
+  ],
+  "connected_tables": [
+    "employees"
+  ],
+  "columns": [
+    {
+      "column": "employee_id",
+      "description": "The unique numerical identifier for each employee. This serves as the primary key for the table."
+    },
+    {
+      "column": "last_name",
+      "description": "The employee's last name."
+    },
+    {
+      "column": "first_name",
+      "description": "The employee's first name."
+    },
+    {
+      "column": "title",
+      "description": "The employee's job title or position within the company."
+    },
+    {
+      "column": "title_of_courtesy",
+      "description": "A formal title used for courtesy, such as 'Mr.', 'Ms.', 'Dr.', etc."
+    },
+    {
+      "column": "birth_date",
+      "description": "The employee's date of birth."
+    },
+    {
+      "column": "hire_date",
+      "description": "The date when the employee was hired by the company."
+    },
+    {
+      "column": "address",
+      "description": "The employee's street address."
+    },
+    {
+      "column": "city",
+      "description": "The city where the employee resides."
+    },
+    {
+      "column": "region",
+      "description": "The region or state where the employee resides."
+    },
+    {
+      "column": "postal_code",
+      "description": "The employee's postal or zip code."
+    },
+    {
+      "column": "country",
+      "description": "The country where the employee resides."
+    },
+    {
+      "column": "home_phone",
+      "description": "The employee's home telephone number."
+    },
+    {
+      "column": "extension",
+      "description": "The internal phone extension for the employee."
+    },
+    {
+      "column": "photo",
+      "description": "A binary large object (BLOB) storing the employee's photograph."
+    },
+    {
+      "column": "notes",
+      "description": "Miscellaneous notes or additional information about the employee."
+    },
+    {
+      "column": "reports_to",
+      "description": "The employee ID of the manager or supervisor to whom this employee reports. This is a foreign key referencing the `employee_id` within this same table, establishing a reporting hierarchy."
+    },
+    {
+      "column": "photo_path",
+      "description": "The file path or URL to the employee's photograph."
+    }
+  ],
+  "strong_entities": [
+    "Employee",
+    "Job Title",
+    "Address",
+    "Contact Information",
+    "Manager"
+  ]
+}

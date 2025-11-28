@@ -1,0 +1,26 @@
+{
+  "name": "region",
+  "summary": "A lookup table for defining and describing geographical or logical regions.",
+  "purpose": "To provide a standardized list of regions, each identified by a unique ID and a descriptive name. This table ensures data consistency across the system when other entities need to be categorized or associated with a specific region.",
+  "dependencies_thoughts": "This table acts as a parent lookup table. Other tables in the database would likely reference `region_id` as a foreign key to categorize their data by region, establishing a one-to-many relationship where one region can be associated with multiple records in child tables.",
+  "keys": [
+    "region_id"
+  ],
+  "connected_tables": [],
+  "columns": [
+    {
+      "column": "region_id",
+      "description": "The unique numerical identifier for the region. This serves as the primary key for the table."
+    },
+    {
+      "column": "region_description",
+      "description": "A textual description or name of the region, providing a human-readable label."
+    }
+  ],
+  "strong_entities": [
+    "Region",
+    "Location",
+    "Area",
+    "Territory"
+  ]
+}

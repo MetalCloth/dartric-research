@@ -1,0 +1,29 @@
+{
+  "name": "category",
+  "summary": "A lookup table storing distinct categories.",
+  "purpose": "This table is designed to define and manage various categories that can be used to classify or group records in other tables (e.g., products, items, or services). It ensures consistency in categorization across the database and facilitates filtering and reporting.",
+  "dependencies_thoughts": "This table is a standalone reference table. Other tables are expected to depend on it by including a foreign key referencing `category_id` to assign categories to their respective records.",
+  "keys": [
+    "category_id"
+  ],
+  "connected_tables": [],
+  "columns": [
+    {
+      "column": "category_id",
+      "description": "The unique numerical identifier for each category. This is the primary key and is automatically generated."
+    },
+    {
+      "column": "name",
+      "description": "The descriptive name of the category, which must be unique and not null."
+    },
+    {
+      "column": "last_update",
+      "description": "A timestamp indicating the last time the category record was modified, defaulting to the current timestamp at creation or update."
+    }
+  ],
+  "strong_entities": [
+    "Category",
+    "Classification",
+    "Type"
+  ]
+}

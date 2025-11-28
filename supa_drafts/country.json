@@ -1,0 +1,29 @@
+{
+  "name": "country",
+  "summary": "Stores a list of countries with their unique identifiers.",
+  "purpose": "To provide a standardized and consistent lookup list of countries. This table serves as a foundational reference for other tables that need to associate records with a specific country, such as customer addresses, store locations, or geographical data, ensuring data integrity and preventing duplicate country entries.",
+  "dependencies_thoughts": "This table acts as a lookup or parent table, providing a list of countries that can be referenced by foreign keys in other tables (e.g., `city`, `address`, `customer`). It does not explicitly depend on other tables for its data.",
+  "keys": [
+    "country_id"
+  ],
+  "connected_tables": [],
+  "columns": [
+    {
+      "column": "country_id",
+      "description": "The unique numerical identifier for each country. This is the primary key and is automatically generated."
+    },
+    {
+      "column": "country",
+      "description": "The name of the country. This field must be unique to ensure each country is represented distinctly."
+    },
+    {
+      "column": "last_update",
+      "description": "A timestamp indicating the last time the country record was updated. Defaults to the current time upon creation or modification."
+    }
+  ],
+  "strong_entities": [
+    "Country",
+    "Nation",
+    "Territory"
+  ]
+}

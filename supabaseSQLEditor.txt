@@ -1,0 +1,40 @@
+-- 1. Enable extension
+create extension if not exists vector;
+
+-- 2. Create table (Note the 768 size!)
+create table embeddings (
+  id uuid primary key,
+  content text,
+  metadata jsonb,
+  embedding vector(768) -- <--- CHANGED FOR GEMINI
+);
+
+-- 3. Create the search function
+create or replace function match_embeddings (
+  query_embedding vector(768), -- <--- CHANGED FOR GEMINI
+  match_threshold float,
+  match_count int
+)
+
+
+returns table (
+  id uuid,
+  content text,
+  metadata jsonb,
+  similarity float
+)
+language plpgsql stable
+as $$
+begin
+  return query
+  select
+    embeddings.id,
+    embeddings.content,
+    embeddings.metadata,
+    1 - (embeddings.embedding <=> query_embedding) as similarity
+  from embeddings
+  where 1 - (embeddings.embedding <=> query_embedding) > match_threshold
+  order by embeddings.embedding <=> query_embedding
+  limit match_count;
+end;
+$$;

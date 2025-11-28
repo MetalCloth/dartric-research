@@ -1,0 +1,36 @@
+{
+  "name": "inventory",
+  "summary": "Records individual copies of films available at specific store locations.",
+  "purpose": "This table manages the stock of film copies across different store locations within a rental or retail system. It allows for the unique identification and tracking of each physical film item, crucial for managing availability, rentals, and returns.",
+  "dependencies_thoughts": "This table links to the `film` table via `film_id` to identify the specific movie title, and to the `store` table via `store_id` to indicate where that film copy is physically located. Each inventory record is dependent on the existence of a valid film and store.",
+  "keys": [
+    "inventory_id"
+  ],
+  "connected_tables": [
+    "film",
+    "store"
+  ],
+  "columns": [
+    {
+      "column": "inventory_id",
+      "description": "The unique identifier for each individual inventory item (a specific copy of a film). This is the primary key and is automatically generated."
+    },
+    {
+      "column": "film_id",
+      "description": "The numerical identifier of the film title. This is a foreign key referencing the 'film' table, indicating which movie this inventory item represents."
+    },
+    {
+      "column": "store_id",
+      "description": "The numerical identifier of the store location. This is a foreign key referencing the 'store' table, indicating where this inventory item is physically located."
+    },
+    {
+      "column": "last_update",
+      "description": "The timestamp indicating when this inventory record was last updated, defaulting to the current time with time zone information."
+    }
+  ],
+  "strong_entities": [
+    "Film Copy",
+    "Film",
+    "Store"
+  ]
+}

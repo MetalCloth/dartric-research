@@ -1,0 +1,29 @@
+{
+  "name": "employee_territories",
+  "summary": "A junction table linking employees to specific geographical territories.",
+  "purpose": "To resolve the many-to-many relationship between employees and territories, allowing an employee to be assigned to multiple territories and a territory to be covered by multiple employees. This table explicitly defines which territories an employee is responsible for or associated with.",
+  "dependencies_thoughts": "This table acts as a bridge between the `employees` table (via `employee_id`) and the `territories` table (via `territory_id`). Records here depend on the existence of IDs in both parent tables to define specific employee-territory assignments.",
+  "keys": [
+    "employee_id",
+    "territory_id"
+  ],
+  "connected_tables": [
+    "employees",
+    "territories"
+  ],
+  "columns": [
+    {
+      "column": "employee_id",
+      "description": "The numerical identifier of the employee. This is part of the composite primary key and a foreign key referencing the 'employees' table."
+    },
+    {
+      "column": "territory_id",
+      "description": "The unique identifier of the territory. This is part of the composite primary key and a foreign key referencing the 'territories' table."
+    }
+  ],
+  "strong_entities": [
+    "Employee",
+    "Territory",
+    "Assignment"
+  ]
+}

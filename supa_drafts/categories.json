@@ -1,0 +1,38 @@
+{
+  "name": "categories",
+  "summary": "A lookup table storing definitions and details for various categories.",
+  "purpose": "This table defines and stores different categories, each with a unique identifier, name, and optional descriptive details. It is designed to allow other tables (e.g., products, articles, services) to classify their records, enabling efficient filtering, grouping, and organization of data based on these categories.",
+  "dependencies_thoughts": "This table acts as a dimension or lookup table. While no explicit foreign key constraints are defined here, it is highly probable that other tables (such as 'products', 'items', or 'posts') will contain a `category_id` column that references `categories.category_id` to classify their respective records.",
+  "keys": [
+    "category_id"
+  ],
+  "connected_tables": [
+    "products",
+    "items",
+    "posts"
+  ],
+  "columns": [
+    {
+      "column": "category_id",
+      "description": "The unique numerical identifier for each category. This serves as the primary key for the table."
+    },
+    {
+      "column": "category_name",
+      "description": "The human-readable name of the category. This field is mandatory and should be unique."
+    },
+    {
+      "column": "description",
+      "description": "A detailed text description providing more context or information about the category."
+    },
+    {
+      "column": "picture",
+      "description": "An optional binary field to store an image or icon associated with the category, such as a category thumbnail."
+    }
+  ],
+  "strong_entities": [
+    "Category",
+    "Product",
+    "Item",
+    "Post"
+  ]
+}

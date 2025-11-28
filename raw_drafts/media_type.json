@@ -19,7 +19,7 @@
   ],
   "strong_entities": [
     "Media Type",
-    "Category",
-    "Media"
+    "Media",
+    "Category"
   ]
 }

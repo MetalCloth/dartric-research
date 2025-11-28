@@ -1,0 +1,41 @@
+{
+  "name": "order_details",
+  "summary": "A junction table detailing the specific products included in each order.",
+  "purpose": "To bridge the many-to-many relationship between orders and products. It records the line items for an order, specifying which products were purchased, their unit price at the time of purchase, the quantity, and any applicable discount for that specific item within the order.",
+  "dependencies_thoughts": "Relates to the `orders` table (order_id to order_id) and the `products` table (product_id to product_id). This table defines the contents of an order, with each record representing a specific product included in a given order.",
+  "keys": [
+    "order_id",
+    "product_id"
+  ],
+  "connected_tables": [
+    "orders",
+    "products"
+  ],
+  "columns": [
+    {
+      "column": "order_id",
+      "description": "The numerical identifier for the order. This is part of the composite primary key and a foreign key referencing the 'orders' table."
+    },
+    {
+      "column": "product_id",
+      "description": "The numerical identifier for the product. This is part of the composite primary key and a foreign key referencing the 'products' table."
+    },
+    {
+      "column": "unit_price",
+      "description": "The price per unit of the product at the time the order was placed."
+    },
+    {
+      "column": "quantity",
+      "description": "The number of units of the product included in this specific order line item."
+    },
+    {
+      "column": "discount",
+      "description": "The discount percentage applied to this specific order detail line item."
+    }
+  ],
+  "strong_entities": [
+    "Order",
+    "Product",
+    "Line Item"
+  ]
+}

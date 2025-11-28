@@ -1,0 +1,47 @@
+{
+  "name": "payment",
+  "summary": "Records individual payment transactions made by customers for rentals.",
+  "purpose": "To meticulously log financial transactions within the system, detailing which customer made a payment, for which rental, and which staff member processed it, along with the amount and date. This table is crucial for financial auditing and tracking revenue related to rentals.",
+  "dependencies_thoughts": "This table acts as a transactional record, implicitly relating to the `customer` table via `customer_id`, the `staff` table via `staff_id`, and the `rental` table via `rental_id`. While explicit foreign key constraints are not defined, these columns are clearly intended to link to their respective parent tables.",
+  "keys": [
+    "payment_id",
+    "payment_date"
+  ],
+  "connected_tables": [
+    "customer",
+    "staff",
+    "rental"
+  ],
+  "columns": [
+    {
+      "column": "payment_id",
+      "description": "A unique, auto-incrementing identifier for each payment transaction. It forms part of the composite primary key."
+    },
+    {
+      "column": "customer_id",
+      "description": "The identifier of the customer who made the payment. This is an inferred foreign key referencing the 'customer' table."
+    },
+    {
+      "column": "staff_id",
+      "description": "The identifier of the staff member who processed the payment. This is an inferred foreign key referencing the 'staff' table."
+    },
+    {
+      "column": "rental_id",
+      "description": "The identifier of the rental transaction for which this payment was made. This is an inferred foreign key referencing the 'rental' table."
+    },
+    {
+      "column": "amount",
+      "description": "The monetary value of the payment, stored with a precision of two decimal places."
+    },
+    {
+      "column": "payment_date",
+      "description": "The timestamp with time zone indicating the exact date and time the payment was recorded. It forms part of the composite primary key."
+    }
+  ],
+  "strong_entities": [
+    "Payment",
+    "Customer",
+    "Staff",
+    "Rental"
+  ]
+}

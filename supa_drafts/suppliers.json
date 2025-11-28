@@ -1,0 +1,65 @@
+{
+  "name": "suppliers",
+  "summary": "Stores comprehensive details about product suppliers.",
+  "purpose": "This table is designed to maintain a master list of all external companies that supply products or services. It provides essential contact and address information for each supplier, enabling efficient management of procurement and vendor relationships within the business.",
+  "dependencies_thoughts": "This is a core dimension table, serving as a master list of suppliers. While no foreign keys are explicitly defined within this DDL, other tables (e.g., `products` or `orders`) would typically reference `supplier_id` as a foreign key to link items or transactions to their respective suppliers.",
+  "keys": [
+    "supplier_id"
+  ],
+  "connected_tables": [],
+  "columns": [
+    {
+      "column": "supplier_id",
+      "description": "The unique numerical identifier for each supplier. This is the primary key for the table."
+    },
+    {
+      "column": "company_name",
+      "description": "The official, legally registered name of the supplier company."
+    },
+    {
+      "column": "contact_name",
+      "description": "The full name of the primary contact person at the supplier company."
+    },
+    {
+      "column": "contact_title",
+      "description": "The job title of the primary contact person."
+    },
+    {
+      "column": "address",
+      "description": "The street address of the supplier's main office or facility."
+    },
+    {
+      "column": "city",
+      "description": "The city where the supplier is located."
+    },
+    {
+      "column": "region",
+      "description": "The administrative region or state where the supplier is located."
+    },
+    {
+      "column": "postal_code",
+      "description": "The postal or zip code for the supplier's address."
+    },
+    {
+      "column": "country",
+      "description": "The country where the supplier is located."
+    },
+    {
+      "column": "phone",
+      "description": "The primary telephone number for contacting the supplier."
+    },
+    {
+      "column": "fax",
+      "description": "The fax number for the supplier, if available."
+    },
+    {
+      "column": "homepage",
+      "description": "The URL of the supplier's official website or homepage."
+    }
+  ],
+  "strong_entities": [
+    "Supplier",
+    "Contact",
+    "Product"
+  ]
+}

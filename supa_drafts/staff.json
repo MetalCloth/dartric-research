@@ -1,0 +1,65 @@
+{
+  "name": "staff",
+  "summary": "Stores detailed information about individual staff members, including personal details, contact information, store assignment, and login credentials.",
+  "purpose": "This table is central to managing the workforce within the system, providing a comprehensive record for each employee. It enables associating staff with their respective physical addresses and the stores they are employed at, facilitating operational management and user authentication for system access.",
+  "dependencies_thoughts": "Relates to the `address` table (address_id to address_id) to store staff contact information, and to the `store` table (store_id to store_id) to indicate which branch a staff member works at. Records in `staff` depend on the existence of corresponding IDs in both `address` and `store` tables.",
+  "keys": [
+    "staff_id"
+  ],
+  "connected_tables": [
+    "address",
+    "store"
+  ],
+  "columns": [
+    {
+      "column": "staff_id",
+      "description": "The unique numerical identifier for each staff member. This is the primary key of the table."
+    },
+    {
+      "column": "first_name",
+      "description": "The first name of the staff member."
+    },
+    {
+      "column": "last_name",
+      "description": "The last name of the staff member."
+    },
+    {
+      "column": "address_id",
+      "description": "The numerical identifier of the staff member's address. This is a foreign key referencing the `address` table."
+    },
+    {
+      "column": "email",
+      "description": "The email address of the staff member."
+    },
+    {
+      "column": "store_id",
+      "description": "The numerical identifier of the store where the staff member works. This is a foreign key referencing the `store` table."
+    },
+    {
+      "column": "active",
+      "description": "A boolean flag indicating whether the staff member is currently active in the system. Defaults to true."
+    },
+    {
+      "column": "username",
+      "description": "The unique username used by the staff member for system login."
+    },
+    {
+      "column": "password",
+      "description": "The hashed or encrypted password for the staff member's login."
+    },
+    {
+      "column": "last_update",
+      "description": "The timestamp of the last time the staff member's record was updated. Defaults to the current time."
+    },
+    {
+      "column": "picture",
+      "description": "An optional binary field to store a picture of the staff member."
+    }
+  ],
+  "strong_entities": [
+    "Staff Member",
+    "Address",
+    "Store",
+    "Credential"
+  ]
+}

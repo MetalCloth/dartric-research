@@ -1,0 +1,32 @@
+{
+  "name": "film_actor",
+  "summary": "A junction table linking actors to films.",
+  "purpose": "To manage the many-to-many relationship between actors and films. It allows a single actor to participate in multiple films and a single film to feature multiple actors, without duplicating actor or film data.",
+  "dependencies_thoughts": "Relates to the `actor` table (actor_id to actor_id) and the `film` table (film_id to film_id). Records here depend on the existence of IDs in both parent tables, with restrictive delete behavior and cascading updates.",
+  "keys": [
+    "actor_id",
+    "film_id"
+  ],
+  "connected_tables": [
+    "actor",
+    "film"
+  ],
+  "columns": [
+    {
+      "column": "actor_id",
+      "description": "The numerical identifier of the actor. This is part of the composite primary key and a foreign key referencing the 'actor' table."
+    },
+    {
+      "column": "film_id",
+      "description": "The numerical identifier of the film. This is part of the composite primary key and a foreign key referencing the 'film' table."
+    },
+    {
+      "column": "last_update",
+      "description": "A timestamp indicating when the record was last updated, defaulting to the current time. Useful for auditing or tracking changes."
+    }
+  ],
+  "strong_entities": [
+    "Actor",
+    "Film"
+  ]
+}

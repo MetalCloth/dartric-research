@@ -19,7 +19,8 @@
   ],
   "strong_entities": [
     "Genre",
-    "Music Type",
-    "Category"
+    "Music",
+    "Track",
+    "Album"
   ]
 }

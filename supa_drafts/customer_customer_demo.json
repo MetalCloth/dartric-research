@@ -1,0 +1,29 @@
+{
+  "name": "customer_customer_demo",
+  "summary": "A junction table linking customers to their demographic classifications.",
+  "purpose": "To manage the many-to-many relationship between individual customers and various customer demographic types. This allows a single customer to be associated with multiple demographic classifications, and a single demographic type to apply to multiple customers, without duplicating data.",
+  "dependencies_thoughts": "This table serves as a bridge between the `customers` table (customer_id to customer_id) and the `customer_demographics` table (customer_type_id to customer_type_id). Each record indicates that a specific customer belongs to a particular customer demographic type, relying on the existence of corresponding IDs in both parent tables.",
+  "keys": [
+    "customer_id",
+    "customer_type_id"
+  ],
+  "connected_tables": [
+    "customer_demographics",
+    "customers"
+  ],
+  "columns": [
+    {
+      "column": "customer_id",
+      "description": "The unique identifier for the customer. This is part of the composite primary key and a foreign key referencing the 'customers' table."
+    },
+    {
+      "column": "customer_type_id",
+      "description": "The unique identifier for the customer demographic type. This is part of the composite primary key and a foreign key referencing the 'customer_demographics' table."
+    }
+  ],
+  "strong_entities": [
+    "Customer",
+    "Demographic",
+    "Classification"
+  ]
+}

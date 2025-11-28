@@ -21,7 +21,9 @@
   ],
   "strong_entities": [
     "Playlist",
+    "Music",
     "Track",
-    "Music"
+    "Song",
+    "Audio"
   ]
 }

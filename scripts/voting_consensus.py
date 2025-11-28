@@ -33,7 +33,7 @@ voting_loop_prompt=ChatPromptTemplate.from_template(voting_loop_prompt)
 chain=voting_loop_prompt | model
 
 
-raw_drafts=r"C:\Users\rawat\dartrix\Dartrix\preprocessing\raw_drafts"
+raw_drafts=r"C:\Users\rawat\dartrix\Dartrix\preprocessing\supa_drafts"
 
 dirs=os.listdir(raw_drafts)
 

@@ -1,0 +1,27 @@
+{
+  "name": "language",
+  "summary": "Stores a standardized list of supported languages.",
+  "purpose": "This table provides a lookup list of languages, enabling other tables in the system to reference language information consistently. It is essential for internationalization, allowing for categorization of content by language or specifying user interface languages.",
+  "dependencies_thoughts": "This is a standalone reference table. Other tables in the system are expected to reference `language_id` from this table as a foreign key to specify language information, rather than this table depending on others.",
+  "keys": [
+    "language_id"
+  ],
+  "connected_tables": [],
+  "columns": [
+    {
+      "column": "language_id",
+      "description": "The unique identifier for each language. This is an auto-incrementing serial primary key."
+    },
+    {
+      "column": "name",
+      "description": "The name of the language (e.g., 'English', 'Spanish'), stored as a fixed-length character string of 20 characters."
+    },
+    {
+      "column": "last_update",
+      "description": "The timestamp with time zone indicating when the language record was last updated, defaulting to the current time."
+    }
+  ],
+  "strong_entities": [
+    "Language"
+  ]
+}

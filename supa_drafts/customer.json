@@ -1,0 +1,62 @@
+{
+  "name": "customer",
+  "summary": "Stores detailed information about individual customers.",
+  "purpose": "This table is central to managing customer data within the system. It links a customer to a specific store and their physical address, enabling tracking of customer activity and contact information. It serves as a foundational entity for sales, marketing, and service operations.",
+  "dependencies_thoughts": "Relates to the `address` table via `address_id` (customer's primary address) and the `store` table via `store_id` (the store the customer is associated with). Records in this table depend on the existence of corresponding entries in both `address` and `store` tables.",
+  "keys": [
+    "customer_id",
+    "address_id",
+    "store_id"
+  ],
+  "connected_tables": [
+    "address",
+    "store"
+  ],
+  "columns": [
+    {
+      "column": "customer_id",
+      "description": "The unique serial identifier for each customer. This is the primary key for the table."
+    },
+    {
+      "column": "store_id",
+      "description": "The numerical identifier of the store the customer is associated with. This is a foreign key referencing the 'store' table."
+    },
+    {
+      "column": "first_name",
+      "description": "The first name of the customer."
+    },
+    {
+      "column": "last_name",
+      "description": "The last name of the customer."
+    },
+    {
+      "column": "email",
+      "description": "The email address of the customer, if available."
+    },
+    {
+      "column": "address_id",
+      "description": "The numerical identifier of the customer's address. This is a foreign key referencing the 'address' table."
+    },
+    {
+      "column": "activebool",
+      "description": "A boolean flag indicating if the customer account is currently active, defaulting to true."
+    },
+    {
+      "column": "create_date",
+      "description": "The date when the customer record was first created, defaulting to the current date."
+    },
+    {
+      "column": "last_update",
+      "description": "The timestamp with time zone of the last modification to the customer record, defaulting to the current time."
+    },
+    {
+      "column": "active",
+      "description": "An integer flag that might represent an alternative or legacy active status for the customer. Potential redundancy with 'activebool'."
+    }
+  ],
+  "strong_entities": [
+    "Customer",
+    "Store",
+    "Address"
+  ]
+}

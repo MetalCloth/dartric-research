@@ -1,0 +1,30 @@
+{
+  "name": "shippers",
+  "summary": "A master table storing information about shipping companies.",
+  "purpose": "This table is designed to hold essential details for each shipping company, including their unique identifier, company name, and contact phone number. It serves as a central registry for all shippers that can be referenced by other operational tables, such as orders.",
+  "dependencies_thoughts": "This table acts as a parent (lookup) table. Other transactional tables, like `orders`, would typically reference `shipper_id` as a foreign key to identify the shipping company responsible for an order.",
+  "keys": [
+    "shipper_id"
+  ],
+  "connected_tables": [],
+  "columns": [
+    {
+      "column": "shipper_id",
+      "description": "The unique numerical identifier for each shipping company. This is the primary key of the table."
+    },
+    {
+      "column": "company_name",
+      "description": "The official name of the shipping company."
+    },
+    {
+      "column": "phone",
+      "description": "The primary contact phone number for the shipping company."
+    }
+  ],
+  "strong_entities": [
+    "Shipper",
+    "Shipping Company",
+    "Carrier",
+    "Order"
+  ]
+}

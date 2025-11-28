@@ -1,0 +1,76 @@
+{
+  "name": "film",
+  "summary": "Stores detailed information about individual films available in a video rental store or similar catalog.",
+  "purpose": "This table serves as the central repository for all core attributes of a film, including its title, description, release details, rental terms, and associated costs. It supports inventory management, customer browsing, and rental transaction processing by providing comprehensive film data.",
+  "dependencies_thoughts": "This table directly relates to the `language` table, with two foreign keys: `language_id` for the primary language of the film and `original_language_id` for its original language, allowing for multilingual film data management. Records in this table are dependent on valid entries in the `language` table.",
+  "keys": [
+    "film_id"
+  ],
+  "connected_tables": [
+    "language"
+  ],
+  "columns": [
+    {
+      "column": "film_id",
+      "description": "The unique numerical identifier for each film. This is the primary key for the table, automatically generated."
+    },
+    {
+      "column": "title",
+      "description": "The official title of the film."
+    },
+    {
+      "column": "description",
+      "description": "A brief summary or synopsis of the film's plot or content."
+    },
+    {
+      "column": "release_year",
+      "description": "The year in which the film was originally released."
+    },
+    {
+      "column": "language_id",
+      "description": "The numerical identifier for the primary language of the film. This is a foreign key referencing the 'language' table."
+    },
+    {
+      "column": "original_language_id",
+      "description": "The numerical identifier for the original language of the film, if different from the primary language. This is an optional foreign key referencing the 'language' table."
+    },
+    {
+      "column": "rental_duration",
+      "description": "The default number of days a film can be rented, with a default of 3 days."
+    },
+    {
+      "column": "rental_rate",
+      "description": "The cost per day for renting the film, with a default of 4.99."
+    },
+    {
+      "column": "length",
+      "description": "The running time of the film in minutes."
+    },
+    {
+      "column": "replacement_cost",
+      "description": "The cost to replace the film if it is lost or damaged, with a default of 19.99."
+    },
+    {
+      "column": "rating",
+      "description": "The MPAA rating of the film (e.g., G, PG, PG-13, R, NC-17), with a default of 'G'."
+    },
+    {
+      "column": "last_update",
+      "description": "The timestamp of the last time the film's record was updated, automatically set to the current time."
+    },
+    {
+      "column": "special_features",
+      "description": "An array of text strings listing any special features included with the film (e.g., 'Trailers', 'Commentaries')."
+    },
+    {
+      "column": "fulltext",
+      "description": "A pre-computed tsvector for efficient full-text searching across film titles and descriptions."
+    }
+  ],
+  "strong_entities": [
+    "Film",
+    "Language",
+    "Feature",
+    "Rating"
+  ]
+}

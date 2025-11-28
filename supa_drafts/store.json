@@ -1,0 +1,36 @@
+{
+  "name": "store",
+  "summary": "Stores information about individual retail or business locations.",
+  "purpose": "This table serves to define and manage each unique store entity within the system. It connects a store to its specific physical address and assigns a manager, providing a central record for operational and geographical organization.",
+  "dependencies_thoughts": "This table explicitly relates to the `address` table via `address_id`, indicating where the store is physically located. It also implicitly relates to a `staff` table via `manager_staff_id`, identifying the staff member responsible for managing the store. Records in this table depend on the existence of corresponding addresses and staff members.",
+  "keys": [
+    "store_id"
+  ],
+  "connected_tables": [
+    "address",
+    "staff"
+  ],
+  "columns": [
+    {
+      "column": "store_id",
+      "description": "The unique identifier for the store. This is the primary key and is automatically generated."
+    },
+    {
+      "column": "manager_staff_id",
+      "description": "The numerical identifier of the staff member who manages this store. This is an inferred foreign key referencing the 'staff' table."
+    },
+    {
+      "column": "address_id",
+      "description": "The numerical identifier of the store's physical address. This is a foreign key referencing the 'address' table."
+    },
+    {
+      "column": "last_update",
+      "description": "A timestamp indicating the last time the store's record was updated, defaulting to the current time."
+    }
+  ],
+  "strong_entities": [
+    "Store",
+    "Address",
+    "Manager"
+  ]
+}

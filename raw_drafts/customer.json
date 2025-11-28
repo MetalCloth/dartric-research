@@ -66,12 +66,9 @@
   ],
   "strong_entities": [
     "Customer",
-    "Employee",
     "Company",
     "Address",
-    "Phone",
-    "Fax",
-    "Email",
-    "Support Representative"
+    "Contact Detail",
+    "Employee"
   ]
 }

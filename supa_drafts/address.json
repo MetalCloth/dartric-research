@@ -1,0 +1,53 @@
+{
+  "name": "address",
+  "summary": "Stores detailed geographical and contact information for specific locations.",
+  "purpose": "To maintain comprehensive location details for various entities such as customers, stores, or staff. It centralizes address management, ensuring data consistency and providing a single source of truth for physical locations and associated contact numbers across the system.",
+  "dependencies_thoughts": "Relates to the `city` table via `city_id` (address.city_id to city.city_id), indicating that each address must belong to an existing city. This table serves as a foundational lookup for location details that other entities would reference.",
+  "keys": [
+    "address_id",
+    "city_id"
+  ],
+  "connected_tables": [
+    "city"
+  ],
+  "columns": [
+    {
+      "column": "address_id",
+      "description": "The unique identifier for each address record. This is the primary key, automatically generated upon insertion."
+    },
+    {
+      "column": "address",
+      "description": "The primary street address line for the location. This field is mandatory."
+    },
+    {
+      "column": "address2",
+      "description": "An optional secondary address line, often used for apartment numbers, suites, or additional building details."
+    },
+    {
+      "column": "district",
+      "description": "The district or neighborhood within the city where the address is located. This field is mandatory."
+    },
+    {
+      "column": "city_id",
+      "description": "The numerical identifier of the city where the address is located. This is a mandatory foreign key referencing the 'city' table."
+    },
+    {
+      "column": "postal_code",
+      "description": "The postal code or ZIP code associated with the address. This field is optional."
+    },
+    {
+      "column": "phone",
+      "description": "The primary contact phone number for the address. This field is mandatory."
+    },
+    {
+      "column": "last_update",
+      "description": "A timestamp indicating the last time the address record was modified. It automatically defaults to the current time upon creation or update."
+    }
+  ],
+  "strong_entities": [
+    "Address",
+    "Location",
+    "City",
+    "Phone Number"
+  ]
+}

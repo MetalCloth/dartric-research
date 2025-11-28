@@ -70,3 +70,53 @@ Return ONLY a comma-separated list of entities. Do not use markdown, bullet poin
 Example Output: Customer, Order, Shipping Address, Payment Method"""
 
 
+reranking_prompt = """
+### ROLE
+You are a SQL Architect. Your goal is to filter a list of candidate tables and retain ONLY the ones strictly required to answer the user's question.
+
+### INSTRUCTIONS
+1. **Analyze Data Coverage:** Select tables that contain the specific columns or metrics requested[cite: 801].
+2. **Check Joins:** You MUST include "bridge" tables that are not explicitly mentioned in the question but are necessary to join two other selected tables.
+3. **Be Minimal:** Do not include tables "just in case." Only include them if they are essential.
+
+### INPUT
+**User Question:**
+{user_question}
+
+**Retrieved Table Schemas:**
+{table_schemas}
+
+### OUTPUT
+Return a JSON object containing the list of selected table names and a short reason for each.
+{{
+  "selected_tables": [
+    {{
+      "table_name": "actual_table_name",
+      "reasoning": "Selected because METADATA shows it has 'unit_price'..."
+    }}
+  ]
+}}
+"""
+reranked_prompt = """
+### ROLE
+You are a SQL Expert. Generate a SQL query.
+
+### CRITICAL RULES
+1. Strict Scope: Use ONLY tables in 'Selected Tables'.
+2. Zero Hallucination: Copy columns EXACTLY from 'Schema Context'.
+3. Join Logic: Use 'CONNECTIONS' to build joins.
+4. **CASE SENSITIVITY (IMPORTANT):**
+   - Do NOT uppercase table names if they are lowercase in the context.
+   - If the context says `album`, write `album`. DO NOT write `ALBUM`.
+   - If the context says `Track`, write `Track`. DO NOT write `TRACK`.
+
+### INPUT
+User Question: {user_question}
+Selected Tables: {reranked_list_json}
+Schema Context: {formatted_buffer}
+
+### OUTPUT
+Return strictly the SQL code block.
+```sql
+SELECT ...
+"""

@@ -1,0 +1,32 @@
+{
+  "name": "territories",
+  "summary": "A lookup table defining geographical or operational territories.",
+  "purpose": "This table is used to define and store distinct geographical or operational territories. It allows for the categorization of various business entities, such as employees or sales data, into specific areas, which helps in organization, reporting, and regional management.",
+  "dependencies_thoughts": "Relates to the `region` table (region_id to region_id). Each territory record depends on the existence of a corresponding region in the parent `region` table.",
+  "keys": [
+    "territory_id"
+  ],
+  "connected_tables": [
+    "region"
+  ],
+  "columns": [
+    {
+      "column": "territory_id",
+      "description": "A unique identifier for each territory. This serves as the primary key for the table."
+    },
+    {
+      "column": "territory_description",
+      "description": "A descriptive name or label for the territory, providing a human-readable identifier."
+    },
+    {
+      "column": "region_id",
+      "description": "The numerical identifier of the region to which this territory belongs. This is a foreign key referencing the 'region' table."
+    }
+  ],
+  "strong_entities": [
+    "Territory",
+    "Region",
+    "Location",
+    "Zone"
+  ]
+}

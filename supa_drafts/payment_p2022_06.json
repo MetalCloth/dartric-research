@@ -1,0 +1,50 @@
+{
+  "name": "payment_p2022_06",
+  "summary": "A partitioned table recording detailed payment transactions for a specific period, linking customers, staff, and rental events.",
+  "purpose": "This table stores individual payment records made by customers for rentals, processed by specific staff members. Its primary purpose is to track financial transactions, enabling detailed reporting on revenue, customer spending habits, and staff performance related to payments. The `_p2022_06` suffix indicates it's likely a partition for June 2022, designed to manage large datasets and improve query performance for time-series analysis.",
+  "dependencies_thoughts": "This table serves as a central transaction record, depending on the existence of valid customer, rental, and staff entries. It links these entities to capture a complete payment event and provides the monetary value and timestamp of that event.",
+  "keys": [
+    "payment_id",
+    "payment_date",
+    "customer_id",
+    "rental_id",
+    "staff_id"
+  ],
+  "connected_tables": [
+    "customer",
+    "rental",
+    "staff"
+  ],
+  "columns": [
+    {
+      "column": "payment_id",
+      "description": "The unique identifier for each payment transaction, automatically generated. This is part of the composite primary key."
+    },
+    {
+      "column": "customer_id",
+      "description": "The unique identifier of the customer who made the payment. This is a foreign key referencing the 'customer' table."
+    },
+    {
+      "column": "staff_id",
+      "description": "The unique identifier of the staff member who processed the payment. This is a foreign key referencing the 'staff' table."
+    },
+    {
+      "column": "rental_id",
+      "description": "The unique identifier of the rental associated with this payment. This is a foreign key referencing the 'rental' table."
+    },
+    {
+      "column": "amount",
+      "description": "The monetary amount of the payment, precise to two decimal places."
+    },
+    {
+      "column": "payment_date",
+      "description": "The date and time when the payment was made, including timezone information. This is part of the composite primary key and is crucial for the table's partitioning strategy."
+    }
+  ],
+  "strong_entities": [
+    "Payment",
+    "Customer",
+    "Staff",
+    "Rental"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "name": "film_category",
+  "summary": "A junction table linking films to their respective categories.",
+  "purpose": "To bridge the many-to-many relationship between films and categories. It allows a single film to be associated with multiple categories (e.g., 'Action', 'Comedy') and a single category to contain many different films, preventing data duplication.",
+  "dependencies_thoughts": "Relates to the `film` table (film_id to film_id) and the `category` table (category_id to category_id). Records here depend on the existence of IDs in both parent tables.",
+  "keys": [
+    "film_id",
+    "category_id"
+  ],
+  "connected_tables": [
+    "category",
+    "film"
+  ],
+  "columns": [
+    {
+      "column": "film_id",
+      "description": "The numerical identifier of the film. This is part of the composite primary key and a foreign key referencing the 'film' table."
+    },
+    {
+      "column": "category_id",
+      "description": "The numerical identifier of the category. This is part of the composite primary key and a foreign key referencing the 'category' table."
+    },
+    {
+      "column": "last_update",
+      "description": "Timestamp indicating the last time this film-category association was updated. Defaults to the current time."
+    }
+  ],
+  "strong_entities": [
+    "Film",
+    "Category"
+  ]
+}

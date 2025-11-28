@@ -1,0 +1,64 @@
+{
+  "name": "customers",
+  "summary": "Stores comprehensive information about individual customers.",
+  "purpose": "This table serves as the central repository for all customer-related data within the system. It enables tracking of customer contact details, geographical location, and communication preferences, essential for sales, marketing, and customer service operations.",
+  "dependencies_thoughts": "This is a foundational lookup table, likely referenced by other tables such as `orders` or `invoices` via its `customer_id` to establish relationships with customer-specific transactions, though no explicit foreign keys are defined within this DDL.",
+  "keys": [
+    "customer_id"
+  ],
+  "connected_tables": [],
+  "columns": [
+    {
+      "column": "customer_id",
+      "description": "A unique identifier for each customer. This is the primary key for the table."
+    },
+    {
+      "column": "company_name",
+      "description": "The official name of the customer's company or organization. This field is mandatory."
+    },
+    {
+      "column": "contact_name",
+      "description": "The name of the primary contact person at the customer's company."
+    },
+    {
+      "column": "contact_title",
+      "description": "The job title of the primary contact person at the customer's company."
+    },
+    {
+      "column": "address",
+      "description": "The street address of the customer's primary location."
+    },
+    {
+      "column": "city",
+      "description": "The city where the customer is located."
+    },
+    {
+      "column": "region",
+      "description": "The region or state where the customer is located (e.g., California, Bavaria)."
+    },
+    {
+      "column": "postal_code",
+      "description": "The postal or ZIP code for the customer's address."
+    },
+    {
+      "column": "country",
+      "description": "The country where the customer is located."
+    },
+    {
+      "column": "phone",
+      "description": "The primary phone number for the customer."
+    },
+    {
+      "column": "fax",
+      "description": "The fax number for the customer, if available."
+    }
+  ],
+  "strong_entities": [
+    "Customer",
+    "Company",
+    "Contact",
+    "Address",
+    "Phone",
+    "Fax"
+  ]
+}

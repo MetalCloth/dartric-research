@@ -1,0 +1,33 @@
+{
+  "name": "us_states",
+  "summary": "A master lookup table containing information about US states.",
+  "purpose": "To provide a standardized list of all US states, including their names, abbreviations, and geographical regions. This table serves as a reference for other tables that need to store or categorize data by US state, ensuring data consistency and simplifying data entry and reporting.",
+  "dependencies_thoughts": "This table appears to be a standalone lookup or dimension table. Other tables would likely reference `state_id` as a foreign key to associate records with specific US states, but no such relationships are defined within this DDL.",
+  "keys": [
+    "state_id"
+  ],
+  "connected_tables": [],
+  "columns": [
+    {
+      "column": "state_id",
+      "description": "The unique numerical identifier for each US state. This serves as the primary key for the table."
+    },
+    {
+      "column": "state_name",
+      "description": "The full, official name of the US state."
+    },
+    {
+      "column": "state_abbr",
+      "description": "The two-letter postal abbreviation for the US state."
+    },
+    {
+      "column": "state_region",
+      "description": "The broader geographical region to which the state belongs (e.g., 'Northeast', 'Midwest', 'South', 'West')."
+    }
+  ],
+  "strong_entities": [
+    "State",
+    "Region",
+    "Country"
+  ]
+}

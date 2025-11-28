@@ -50,7 +50,6 @@
   "strong_entities": [
     "Invoice",
     "Customer",
-    "Address",
-    "Transaction"
+    "Address"
   ]
 }

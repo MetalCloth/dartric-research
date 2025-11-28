@@ -1,0 +1,79 @@
+{
+  "name": "orders",
+  "summary": "Records details for each customer order, including customer, employee, and shipping information.",
+  "purpose": "This table serves as the primary repository for all customer order transactions. It captures essential data points required for order processing, fulfillment, and tracking, linking to related entities like customers, employees, and shipping methods to provide a comprehensive view of each order.",
+  "dependencies_thoughts": "This table is central to the sales process, relating to the `customers` table (customer_id to customer_id), the `employees` table (employee_id to employee_id), and the `shippers` table (ship_via to shipper_id). It relies on these parent tables for referential integrity.",
+  "keys": [
+    "order_id"
+  ],
+  "connected_tables": [
+    "customers",
+    "employees",
+    "shippers"
+  ],
+  "columns": [
+    {
+      "column": "order_id",
+      "description": "The unique identifier for each individual customer order. This is the primary key for the table."
+    },
+    {
+      "column": "customer_id",
+      "description": "The identifier of the customer who placed the order. This is a foreign key referencing the 'customers' table."
+    },
+    {
+      "column": "employee_id",
+      "description": "The identifier of the employee responsible for taking or processing the order. This is a foreign key referencing the 'employees' table."
+    },
+    {
+      "column": "order_date",
+      "description": "The calendar date when the order was officially placed by the customer."
+    },
+    {
+      "column": "required_date",
+      "description": "The target date by which the order is expected or required to be delivered to the customer."
+    },
+    {
+      "column": "shipped_date",
+      "description": "The actual calendar date when the order was dispatched or shipped to the customer."
+    },
+    {
+      "column": "ship_via",
+      "description": "The identifier of the shipping company or method used for this specific order. This is a foreign key referencing the 'shippers' table's 'shipper_id'."
+    },
+    {
+      "column": "freight",
+      "description": "The monetary cost associated with shipping this particular order."
+    },
+    {
+      "column": "ship_name",
+      "description": "The full name of the person or entity receiving the shipment."
+    },
+    {
+      "column": "ship_address",
+      "description": "The street address for the order's shipment destination."
+    },
+    {
+      "column": "ship_city",
+      "description": "The city for the order's shipment destination."
+    },
+    {
+      "column": "ship_region",
+      "description": "The region, state, or province for the order's shipment destination."
+    },
+    {
+      "column": "ship_postal_code",
+      "description": "The postal or ZIP code for the order's shipment destination."
+    },
+    {
+      "column": "ship_country",
+      "description": "The country for the order's shipment destination."
+    }
+  ],
+  "strong_entities": [
+    "Order",
+    "Customer",
+    "Employee",
+    "Shipper",
+    "Shipping Address"
+  ]
+}

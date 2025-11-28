@@ -3,6 +3,7 @@ from langchain_text_splitters import RecursiveJsonSplitter
 from langchain_google_genai import ChatGoogleGenerativeAI
 from dotenv import load_dotenv
 import json
+import time
 from langchain_core.documents import Document
 
 from langchain_chroma import Chroma
@@ -10,13 +11,14 @@ from langchain_google_genai import GoogleGenerativeAIEmbeddings
 import os
 load_dotenv()
 from upload_to_vector import generate_embeddings
+# from upload_to_vector import generate_embeddings
 
 
 os.environ['GOOGLE_API_KEY']=os.getenv('GOOGLE_API_KEY')
 
 
 model=GoogleGenerativeAIEmbeddings(model='gemini-embedding-001')
-vectordb=Chroma(embedding_function=model,persist_directory='./chroma_db')
+vectordb=Chroma(embedding_function=model,persist_directory='./brain_db')
 # print(model.invoke("HI I AM GAY"))
 
 
@@ -28,6 +30,7 @@ def embed_documents(file_path):
         content=json.load(file)
 
         docs=generate_embeddings(content)
+        time.sleep(5)
     
     # print(docs[0])
 
@@ -46,7 +49,7 @@ def embed_documents(file_path):
 
 if __name__=='__main__':
 
-    raw_draft_path=r'C:\Users\rawat\dartrix\Dartrix\preprocessing\raw_drafts'
+    raw_draft_path=r'C:\Users\rawat\dartrix\Dartrix\preprocessing\supa_drafts'
 
     dirs=os.listdir(raw_draft_path)
     

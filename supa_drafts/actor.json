@@ -1,0 +1,33 @@
+{
+  "name": "actor",
+  "summary": "A table storing details about individual actors.",
+  "purpose": "To maintain a unique record for each actor, including their first name, last name, and a timestamp of their last data modification. This table is a foundational entity, providing actor information for related tables like 'film_actor' or 'movie_cast'.",
+  "dependencies_thoughts": "This table serves as a primary entity in the database, with `actor_id` as its unique identifier. While it doesn't explicitly reference other tables, it is expected to be referenced by other tables (e.g., `film_actor`) that link actors to specific films or roles, making it a crucial component for relational integrity.",
+  "keys": [
+    "actor_id"
+  ],
+  "connected_tables": [],
+  "columns": [
+    {
+      "column": "actor_id",
+      "description": "The unique numerical identifier for the actor. This is the primary key and is automatically generated."
+    },
+    {
+      "column": "first_name",
+      "description": "The first name of the actor."
+    },
+    {
+      "column": "last_name",
+      "description": "The last name or surname of the actor."
+    },
+    {
+      "column": "last_update",
+      "description": "The timestamp indicating the last time the actor's record was updated, defaulting to the current time."
+    }
+  ],
+  "strong_entities": [
+    "Actor",
+    "Film",
+    "Role"
+  ]
+}

@@ -35,10 +35,9 @@
     }
   ],
   "strong_entities": [
+    "Invoice Line",
     "Invoice",
-    "Line Item",
     "Track",
-    "Customer",
-    "Product"
+    "Customer"
   ]
 }

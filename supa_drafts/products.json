@@ -1,0 +1,60 @@
+{
+  "name": "products",
+  "summary": "A central table storing details about various products, including their names, pricing, inventory levels, and classification.",
+  "purpose": "This table serves as the primary catalog for all goods or services offered. It tracks essential product information, manages stock levels for inventory control, and links products to their respective suppliers and categories for organization and supply chain management.",
+  "dependencies_thoughts": "This table depends on the `categories` table for product classification via `category_id` and on the `suppliers` table for supplier information via `supplier_id`. It acts as the core entity for product-related data, referencing these parent tables.",
+  "keys": [
+    "product_id"
+  ],
+  "connected_tables": [
+    "categories",
+    "suppliers"
+  ],
+  "columns": [
+    {
+      "column": "product_id",
+      "description": "The unique numerical identifier for each product. This is the primary key for the table."
+    },
+    {
+      "column": "product_name",
+      "description": "The name of the product, a required field."
+    },
+    {
+      "column": "supplier_id",
+      "description": "The numerical identifier of the supplier who provides this product. This is a foreign key referencing the 'suppliers' table."
+    },
+    {
+      "column": "category_id",
+      "description": "The numerical identifier of the category to which the product belongs. This is a foreign key referencing the 'categories' table."
+    },
+    {
+      "column": "quantity_per_unit",
+      "description": "Describes how the product is packaged or measured (e.g., '10 boxes x 20 bags', '1 bottle')."
+    },
+    {
+      "column": "unit_price",
+      "description": "The price of a single unit of the product."
+    },
+    {
+      "column": "units_in_stock",
+      "description": "The current number of units available in inventory."
+    },
+    {
+      "column": "units_on_order",
+      "description": "The number of units currently on order from the supplier."
+    },
+    {
+      "column": "reorder_level",
+      "description": "The threshold quantity at which new stock should be ordered to prevent shortages."
+    },
+    {
+      "column": "discontinued",
+      "description": "A flag indicating whether the product has been discontinued (e.g., 0 for active, 1 for discontinued). This is a required field."
+    }
+  ],
+  "strong_entities": [
+    "Product",
+    "Category",
+    "Supplier"
+  ]
+}
