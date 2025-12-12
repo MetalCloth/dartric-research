@@ -7,6 +7,8 @@
     6. connected_tables: names of table that are connected with this one concerning the previously detected keys
 
 
+https://github.com/user-attachments/assets/808db055-c49b-4379-ab79-7276bddc54c0
+
 
 ## example
    CREATE TABLE playlist_track (
