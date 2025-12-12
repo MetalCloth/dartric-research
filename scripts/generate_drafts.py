@@ -12,7 +12,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
 from sqlalchemy import create_engine,text
 from sqlalchemy.schema import CreateTable
-from sqlalchemy import MetaData
+from sqlalchemy import MetaData,inspect
 import dotenv
 from prompts import schema_architecture_prompt
 from dotenv import load_dotenv
@@ -20,7 +20,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 os.environ['GOOGLE_API_KEY']=os.getenv('GOOGLE_API_KEY')
-
 
 model=ChatGoogleGenerativeAI(model='gemini-2.5-flash')
 DB_URL = "postgresql://postgres.ywftdjkjdchwmnmytrjj:shivanshkimkc@aws-1-ap-south-1.pooler.supabase.com:6543/postgres"
@@ -36,7 +35,6 @@ output_folder=r"C:\Users\rawat\dartrix\Dartrix\preprocessing\supa_drafts"
 
 metadata = MetaData()
 metadata.reflect(bind=engine)
-
 
 # ## does one at a time but i will make it 10 at a time
 # for table_name in metadata.tables:
@@ -109,16 +107,17 @@ metadata.reflect(bind=engine)
 # #                 print(f"   Saved: {table_name}")
 
 
+
 try:
     engine = create_engine(DB_URL)
     metadata = MetaData()
     
-    # Fetch table definitions
+
     metadata.reflect(bind=engine)
     print(f"✅ Connected! Found {len(metadata.tables)} tables.")
     f=0
     
-    # Open file to write
+
     for table_name in metadata.tables:
         
         if table_name in ['embeddings', 'embeddings_documents']:
@@ -126,7 +125,8 @@ try:
 
         if table_name.startswith("pg_"):
             continue
-        # Generate DDL
+
+
         table = metadata.tables[table_name]
         ddl = CreateTable(table).compile(engine)
         content=str(ddl).strip() + ";\n\n"
@@ -136,7 +136,7 @@ try:
         raw_text=answer.content
         clean_text = re.sub(r"```json|```", "", raw_text).strip()
         json_data = json.loads(clean_text)
-        # print(json_data)
+
         file_path=os.path.join(output_folder,f"{table_name}.json")
 
         with open(file_path,"w") as f:

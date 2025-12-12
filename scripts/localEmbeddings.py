@@ -19,7 +19,6 @@ os.environ['GOOGLE_API_KEY']=os.getenv('GOOGLE_API_KEY')
 
 model=GoogleGenerativeAIEmbeddings(model='gemini-embedding-001')
 vectordb=Chroma(embedding_function=model,persist_directory='./brain_db')
-# print(model.invoke("HI I AM GAY"))
 
 
 
@@ -31,9 +30,6 @@ def embed_documents(file_path):
 
         docs=generate_embeddings(content)
         time.sleep(5)
-    
-    # print(docs[0])
-
     
 
 
